@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashmim | Branded Clothing on Sale</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- EMBEDDED STYLES -->
+    <style>
+        :root {
+            --soft-pink: #FFF0F2;
+            --accent-pink: #FBC5CD;
+            --light-yellow: #FFFDF0;
+            --accent-yellow: #FEF08A;
+            --text-dark: #27272A;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--light-yellow);
+            margin: 0;
+            padding: 0;
+            font-size: 1.25rem; /* Large overall base text */
+            line-height: 1.6;
+        }
+
+        .announcement-bar {
+            background-color: var(--accent-pink);
+            text-align: center;
+            padding: 0.85rem 0;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            color: #27272a;
+            text-transform: uppercase;
+        }
+
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 240, 242, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+            border-bottom: 2px solid #FBC5CD;
+        }
+
+        /* Enlarged Subtitle / Tagline */
+        .brand-tagline {
+            font-size: 1.15rem; 
+            font-style: italic;
+            font-weight: 600;
+            color: #4b5563;
+            letter-spacing: 0.02em;
+        }
+
+        /* Prominent Navigation Links */
+        .nav-link {
+            transition: color 0.2s;
+            color: #18181b;
+            font-size: 1.25rem; 
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            color: #d9777f;
+        }
+
+        .cart-icon-container {
+            position: relative;
+            padding: 0.5rem;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background-color: var(--accent-yellow);
+            font-size: 0.95rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            font-weight: 800;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-section {
+            position: relative;
+            background: linear-gradient(to right, var(--soft-pink), var(--light-yellow));
+            padding: 6rem 1.5rem;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(251, 197, 205, 0.2);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--accent-yellow);
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            margin-bottom: 1.5rem;
+            color: #27272a;
+        }
+
+        .hero-title {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: #27272a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        @media (min-width: 768px) {
+            .hero-title { font-size: 4.8rem; }
+        }
+
+        .hero-title-italic {
+            font-weight: 500;
+            font-style: italic;
+            color: #d9777f;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: #3f3f46;
+            max-width: 55rem;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 400;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #27272a;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            padding: 1.1rem 2.8rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px -1px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+        .hero-btn:hover {
+            background-color: var(--accent-pink);
+            color: #27272a;
+        }
+
+        .about-section {
+            padding: 5rem 1.5rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid rgba(251, 197, 205, 0.2);
+        }
+
+        .heart-icon {
+            color: var(--accent-pink);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-title {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+            font-size: 2.5rem;
+            color: #27272a;
+            margin-bottom: 1rem;
+        }
+
+        .about-vision {
+            font-size: 1.65rem;
+            font-style: italic;
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+            color: #27272a;
+            max-width: 52rem;
+            margin: 0 auto 1.25rem auto;
+        }
+
+        .about-text {
+            color: #4b5563;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            max-width: 50rem;
+            margin: 0 auto;
+        }
+
+        .shop-section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+            font-size: 2.8rem;
+            color: #27272a;
+        }
+
+        .section-subtitle {
+            color: #52525b;
+            font-size: 1.2rem;
+            margin-top: 0.35rem;
+        }
+
+        .filter-tab {
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+        .filter-tab.active {
+            background-color: #27272a;
+            color: #ffffff;
+        }
+        .filter-tab:not(.active) {
+            background-color: var(--soft-pink);
+            color: #27272a;
+        }
+        .filter-tab:not(.active):hover {
+            background-color: rgba(251, 197, 205, 0.7);
+        }
+
+        .collab-section {
+            background: linear-gradient(135deg, #FFF0F2 0%, #FFFFFF 100%);
+            border-top: 2px solid #FBC5CD;
+            border-bottom: 2px solid #FBC5CD;
+            padding: 5rem 1.5rem;
+        }
+
+        .faq-section {
+            background-color: #ffffff;
+            padding: 5rem 1.5rem;
+        }
+
+        .features-bar {
+            background-color: var(--light-yellow);
+            border-top: 1px solid rgba(251, 197, 205, 0.3);
+            border-bottom: 1px solid rgba(251, 197, 205, 0.3);
+            padding: 4rem 1.5rem;
+        }
+
+        .main-footer {
+            background-color: var(--soft-pink);
+            color: #27272a;
+            padding-top: 5rem;
+            padding-bottom: 2.5rem;
+            border-top: 2px solid #FBC5CD;
+        }
+
+        .footer-tagline {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-about {
+            font-size: 1.05rem;
+            max-width: 32rem;
+            line-height: 1.6;
+            color: #52525b;
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+            color: #27272a;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.05rem;
+        }
+        .footer-links li {
+            margin-bottom: 0.85rem;
+        }
+        .footer-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer-links a:hover {
+            color: #27272a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        ✨ Exclusive Sale Event — Premium Brands, Unbeatable Prices ✨
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="w-full max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 h-28 flex items-center justify-between">
+            <div class="flex items-center space-x-5">
+                <!-- ENLARGED HEADER LOGO (h-20) -->
+                <img src="KSLogo.png" alt="Kashmim Logo" class="h-28 w-auto object-contain">
+                <!-- ENLARGED & BOLDER TAGLINE -->
+                <span class="brand-tagline hidden lg:inline-block border-l-2 border-pink-300 pl-5 py-1">
+                    A Mother's Vision, the Daughter's Passion
+                </span>
+            </div>
+            
+            <!-- ENLARGED & BOLDER NAV LINKS -->
+            <nav class="hidden md:flex space-x-12">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#shop" class="nav-link">Shop Sale</a>
+                <a href="#about" class="nav-link">Our Story</a>
+                <a href="#collab" class="nav-link">Collaborate</a>
+                <a href="#faqs" class="nav-link">FAQs</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-4 text-zinc-800">
+                <a href="#shop" class="cart-icon-container">
+                    <i class="fa-solid fa-bag-shopping text-3xl"></i>
+                    <span id="cart-count" class="cart-badge">50</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="w-full max-w-[95%] mx-auto text-center relative z-10">
+            <span class="hero-badge">Limited Time Offers</span>
+            <h1 class="hero-title">
+                Your Favorite Luxury Brands. <br><span class="hero-title-italic">Permanently on Sale.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Carefully curated authentic branded pieces, brought to life through a beautiful legacy of style and devotion.
+            </p>
+            <a href="#shop" class="hero-btn">Browse Collection</a>
+        </div>
+    </section>
+
+    <!-- Brand Vision Section -->
+    <section id="about" class="about-section">
+        <div class="w-full max-w-[95%] mx-auto text-center">
+            <i class="fa-solid fa-heart heart-icon"></i>
+            <h2 class="about-title">Our Heritage</h2>
+            <p class="about-vision">"A mother's vision, the daughter's passion."</p>
+            <p class="about-text">
+                Kashmim bridges generations of elegance. What began as a mother’s discerning eye for timeless quality has evolved into a daughter's vibrant drive to bring premium authentic fashion to your wardrobe at unbeatable sale pricing.
+            </p>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="shop-section">
+        <div class="w-full max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="section-title">The Sale Catalog</h2>
+                    <p class="section-subtitle">Showing all 50 curated premium listings available</p>
+                </div>
+                <div class="flex gap-3 mt-6 md:mt-0 overflow-x-auto pb-2">
+                    <span class="filter-tab active">All Pieces</span>
+                    <span class="filter-tab">Pret</span>
+                    <span class="filter-tab">Unstitched</span>
+                    <span class="filter-tab">Formal Wear</span>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <!-- Data dynamically populated via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Collaboration Section (New Blog Post / Invitation) -->
+    <section id="collab" class="collab-section">
+        <div class="w-full max-w-5xl mx-auto text-center">
+            <span class="bg-[#FBC5CD] text-zinc-900 text-sm font-bold tracking-widest uppercase px-4 py-1.5 rounded-full inline-block mb-4">Partner With Kashmim</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-zinc-900 mb-6">Welcoming Brand Collaborations & Inventory Partners</h2>
+            <div class="bg-white p-8 sm:p-12 rounded-xl border border-pink-200 shadow-sm text-left text-zinc-700 text-lg leading-relaxed space-y-6">
+                <p class="font-medium text-xl text-zinc-800">
+                    Are you an established fashion designer, clothing brand, or boutique owner looking to clear seasonal overstock, excess inventory, or exclusive collections?
+                </p>
+                <p>
+                    At <strong>Kashmim</strong>, we take pride in showcasing authentic branded apparel to an active audience of fashion enthusiasts. Our platform provides designers and manufacturers a trusted avenue to offload inventory seamlessly while maintaining brand integrity.
+                </p>
+                <p>
+                    We actively invite fashion labels, textile producers, and wholesale distributors to collaborate with us. Whether you want to list excess stock or partner for direct sales campaigns, we offer transparent terms and rapid distribution.
+                </p>
+                <div class="pt-4 border-t border-pink-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <h4 class="font-bold text-zinc-900 text-lg">Interested in collaborating?</h4>
+                        <p class="text-base text-zinc-500">Reach out directly to our partnerships team via email or WhatsApp.</p>
+                    </div>
+                    <!-- Direct Email Link -->
+                    <a href="mailto:kasmim@gmail.com" class="bg-zinc-900 text-white font-bold text-base px-6 py-3 rounded hover:bg-pink-300 hover:text-zinc-900 transition-colors whitespace-nowrap">
+                        <i class="fa-solid fa-envelope mr-2"></i>Email: kasmim@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section (Updated with requested policies) -->
+    <section id="faqs" class="faq-section">
+        <div class="w-full max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-zinc-900">Frequently Asked Questions</h2>
+                <p class="text-zinc-600 text-lg mt-2">Important store details & order guidelines</p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-[#FFFDF0] p-6 rounded-lg border border-pink-200">
+                    <h3 class="font-bold text-xl text-zinc-900 mb-2"><i class="fa-solid fa-circle-question text-pink-400 mr-2"></i>What is your Return and Exchange Policy?</h3>
+                    <p class="text-zinc-700 text-base">
+                        Please note that we maintain a strict <strong>No Return & No Exchange Policy</strong> on all items, as all products are heavily discounted branded pieces sold at clearance rates. We encourage customers to verify details on WhatsApp before finalizing orders.
+                    </p>
+                </div>
+
+                <div class="bg-[#FFFDF0] p-6 rounded-lg border border-pink-200">
+                    <h3 class="font-bold text-xl text-zinc-900 mb-2"><i class="fa-solid fa-circle-question text-pink-400 mr-2"></i>Are the prices negotiable?</h3>
+                    <p class="text-zinc-700 text-base">
+                        No, all prices listed on Kashmim are <strong>Strictly Fixed</strong>. We offer maximum discounts upfront on original branded clothing to ensure fairness and simplicity for all customers.
+                    </p>
+                </div>
+
+                <div class="bg-[#FFFDF0] p-6 rounded-lg border border-pink-200">
+                    <h3 class="font-bold text-xl text-zinc-900 mb-2"><i class="fa-solid fa-circle-question text-pink-400 mr-2"></i>Are all products 100% original and authentic brands?</h3>
+                    <p class="text-zinc-700 text-base">
+                        Yes, absolutely! Every article listed in our store is guaranteed 100% original stock sourced directly from recognized brand outlets and authorized clearance inventory.
+                    </p>
+                </div>
+
+                <div class="bg-[#FFFDF0] p-6 rounded-lg border border-pink-200">
+                    <h3 class="font-bold text-xl text-zinc-900 mb-2"><i class="fa-solid fa-circle-question text-pink-400 mr-2"></i>How do I place an order?</h3>
+                    <p class="text-zinc-700 text-base">
+                        Simply click the <strong>"Order via WhatsApp"</strong> button under any article. A pre-filled message with the product ID and price will automatically open in your WhatsApp chat so you can send your shipping address to confirm.
+                    </p>
+                </div>
+
+                <div class="bg-[#FFFDF0] p-6 rounded-lg border border-pink-200">
+                    <h3 class="font-bold text-xl text-zinc-900 mb-2"><i class="fa-solid fa-circle-question text-pink-400 mr-2"></i>What are the delivery charges and estimated timeline?</h3>
+                    <p class="text-zinc-700 text-base">
+                        Delivery typically takes 3 to 5 business days nationwide. Delivery charges are calculated based on parcel weight and destination, which will be confirmed with you on WhatsApp prior to dispatch.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Trust & Features Bar -->
+    <section class="features-bar">
+        <div class="w-full max-w-[95%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-4">
+                <i class="fa-solid fa-certificate text-3xl text-pink-400 mb-3"></i>
+                <h4 class="font-bold text-xl text-zinc-900">100% Branded & Authentic</h4>
+                <p class="text-base text-zinc-600">Every piece is verified original stock direct from brands.</p>
+            </div>
+            <div class="p-4">
+                <i class="fa-solid fa-truck-fast text-3xl text-pink-400 mb-3"></i>
+                <h4 class="font-bold text-xl text-zinc-900">Swift Nationwide Delivery</h4>
+                <p class="text-base text-zinc-600">Carefully packaged and shipped straight to your doorstep.</p>
+            </div>
+            <div class="p-4">
+                <i class="fa-brands fa-whatsapp text-3xl text-pink-400 mb-3"></i>
+                <h4 class="font-bold text-xl text-zinc-900">Instant WhatsApp Checkout</h4>
+                <p class="text-base text-zinc-600">No complex forms. Tap buy, share details over chat, and order is confirmed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="main-footer">
+        <div class="w-full max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div class="md:col-span-2">
+                <!-- ENLARGED FOOTER LOGO (h-24) -->
+                <img src="KSLogo.png" alt="Kashmim Logo" class="h-24 w-auto mb-3">
+                <p class="footer-tagline">A Mother's Vision, the Daughter's Passion</p>
+                <p class="footer-about">
+                    Premium designer wear, luxury fabrics, and international brands at markdown prices. Experience high fashion without the high price tag.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Support & Help</h4>
+                <ul class="footer-links">
+                    <li><a href="#faqs">No Return Policy Details</a></li>
+                    <li><a href="#faqs">Fixed Pricing Information</a></li>
+                    <li><a href="#faqs">How to Order via WhatsApp</a></li>
+                    <li><a href="#faqs">Delivery & Shipping</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Get In Touch</h4>
+                <ul class="footer-links space-y-3">
+                    <li><i class="fa-brands fa-whatsapp text-emerald-600 font-bold mr-2 text-xl"></i>03247469012</li>
+                    <!-- CLICKABLE DIRECT EMAIL LINK -->
+                    <li>
+                        <a href="mailto:kasmim@gmail.com" class="text-zinc-900 font-bold hover:underline flex items-center">
+                            <i class="fa-solid fa-envelope mr-2 text-pink-500 text-xl"></i>kasmim@gmail.com
+                        </a>
+                    </li>
+                    <li><i class="fa-solid fa-location-dot mr-2 text-xl text-zinc-700"></i>Pakistan</li>
+                </ul>
+            </div>
+        </div>
+        <div class="w-full max-w-[95%] mx-auto border-t border-pink-200 pt-8 text-center text-base text-zinc-600 font-medium">
+            &copy; 2026 KASHMIM Sale Store. All Rights Reserved. Designed with Elegance.
+        </div>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        const whatsappNumber = "923247469012";
+        const container = document.getElementById('product-container');
+
+        function checkoutViaWhatsApp(id, name, price) {
+            const message = `Hello Kashmim! ✨\nI would like to purchase the following item from your sale:\n\n📌 *Product ID:* KS-${id}\n👗 *Item:* ${name}\n💰 *Price:* ${price}\n\nPlease let me know if this is available to finalize my delivery details. Thank you!`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        const products = [
+            {
+                id: 1,
+                name: "IZEL 8006",
+                description: "90/70 lawn, front & sleeve heavily embroidered, soft voil printed dupatta, plain trouser",
+                price: "Rs. 3,499",
+                originalPrice: "Rs. 5,195",
+                image: "images1.jpeg"
+            },
+            {
+                id: 2,
+                name: "Classic Silk Festive Kurti",
+                description: "Ready-to-wear digital printed premium raw silk tunic styled with elegant vintage border designs.",
+                price: "Rs. 3,200",
+                originalPrice: "Rs. 6,400",
+                image: "images/product2.jpg"
+            },
+            {
+                id: 3,
+                name: "Luxury Organza Party Wear",
+                description: "Stunning semi-formal hand-crafted organza shirt complete with fine tilla work and inner satin lining.",
+                price: "Rs. 7,800",
+                originalPrice: "Rs. 15,600",
+                image: "images/product3.jpg"
+            }
+        ];
+
+        for (let i = 4; i <= 50; i++) {
+            products.push({
+                id: i,
+                name: `Designer Branded Article ${i}`,
+                description: "Authentic premium brand luxury outfit curated from seasonal excess inventory. High-end fabric on markdown sale.",
+                price: "Rs. 3,999",
+                originalPrice: "Rs. 7,999",
+                image: ""
+            });
+        }
+
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = "bg-white border border-zinc-200 hover:border-[#FBC5CD] group transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md rounded-sm";
+            
+            const imageDOM = product.image 
+                ? `<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />`
+                : '';
+                
+            const placeholderDisplay = product.image ? 'style="display: none;"' : '';
+
+            card.innerHTML = `
+                <div>
+                    <div class="relative bg-[#FFFDF0] aspect-[4/5] w-full flex flex-col items-center justify-center border-b border-zinc-100 overflow-hidden text-zinc-400 group-hover:bg-[#FFF0F2]/50 transition-colors duration-300">
+                        ${imageDOM}
+                        <div class="absolute inset-0 flex flex-col items-center justify-center bg-[#FFFDF0]" ${placeholderDisplay}>
+                            <i class="fa-regular fa-image text-5xl mb-2 opacity-40 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span class="text-sm tracking-widest uppercase opacity-70 font-semibold">Image Slot [KS-${product.id}]</span>
+                        </div>
+                        <span class="absolute top-3 left-3 bg-[#FBC5CD] text-zinc-900 text-xs font-bold tracking-wider px-3 py-1 uppercase rounded-sm">SALE</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs uppercase tracking-widest text-pink-600 font-bold">Premium Brand Collection</span>
+                        <h3 class="text-xl font-serif font-bold text-zinc-800 mt-1 mb-2 group-hover:text-[#e57373] transition-colors leading-snug">${product.name}</h3>
+                        <p class="text-base text-zinc-600 leading-relaxed font-normal">${product.description}</p>
+                    </div>
+                </div>
+                <div class="px-5 pb-5 pt-2">
+                    <div class="flex items-baseline space-x-2 mb-4">
+                        <span class="text-2xl font-extrabold text-zinc-900">${product.price}</span>
+                        <span class="text-base text-zinc-400 line-through">${product.originalPrice}</span>
+                    </div>
+                    <button onclick="checkoutViaWhatsApp(${product.id}, '${product.name}', '${product.price}')" 
+                            class="w-full bg-[#FFF0F2] text-zinc-900 border-2 border-[#FBC5CD] py-3.5 text-sm font-bold tracking-wider uppercase flex items-center justify-center space-x-2 hover:bg-zinc-800 hover:text-white hover:border-zinc-800 transition-all duration-300 cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-xl text-emerald-600"></i>
+                        <span>Order via WhatsApp</span>
+                    </button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
